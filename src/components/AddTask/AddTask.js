@@ -54,7 +54,7 @@ const AddTask = () => {
                     <input className='form-control mt-3' type="text" placeholder="Task Name" {...register("name", { required: true, maxLength: 80 })} />
                     <textarea className='form-control mt-3' placeholder='Task Description' {...register("des", { required: true, min: 5, maxLength: 100 })} />
 
-                    <input className='btn todo-bg-color text-white w-100 mt-3' type="submit" value='Add' />
+                    <input className='btn todo-bg-color text-white w-100 mt-3' type="submit" value='Add Task' />
                 </form>
 
 

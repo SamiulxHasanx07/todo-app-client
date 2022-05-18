@@ -20,7 +20,7 @@ const AllTasks = () => {
                         <th>Serial</th>
                         <th>Task Name</th>
                         <th>Task Description</th>
-                        <th>Added Time</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
