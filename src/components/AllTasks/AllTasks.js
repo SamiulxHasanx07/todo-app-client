@@ -1,6 +1,5 @@
 import React from 'react';
 import { Table } from 'react-bootstrap';
-import { useQuery } from 'react-query';
 import SingleTask from './SingleTask/SingleTask';
 
 const AllTasks = ({tasks, refetch}) => {
@@ -11,16 +10,17 @@ const AllTasks = ({tasks, refetch}) => {
     //         .then(res => res.json())
     // )
     return (
-        <div>
+        <div className=' todo-table px-2 py-5'>
             <h2 className='text-center title-color-main'>All Added Tasks</h2>
 
-            <Table hover responsive>
+            <Table hover responsive className=''>
                 <thead>
                     <tr>
                         <th>Serial</th>
                         <th>Task Name</th>
                         <th>Task Description</th>
-                        <th>Action</th>
+                        <th>Complete</th>
+                        <th>Delete</th>
                     </tr>
                 </thead>
                 <tbody>

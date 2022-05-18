@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { toast } from 'react-toastify';
 import Swal from 'sweetalert2';
 
@@ -78,8 +78,10 @@ const SingleTask = ({ task, index, refetch }) => {
             <td>{state ? <strike>{name}</strike> : `${name}`}</td>
             <td>{state ? <strike>{des}</strike> : `${des}`}</td>
             <td>
-                <button disabled={state} onClick={handleComplete} className="btn todo-bg-color text-white">Complete</button>
-                <button onClick={handleDelete} className="btn btn-danger ms-3">Delete</button>
+                <button disabled={state} onClick={handleComplete} className="btn btn-sm todo-bg-color text-white">Complete</button>
+            </td>
+            <td>
+                <button onClick={handleDelete} className="btn btn-sm btn-danger">Delete</button>
             </td>
         </tr>
     );
