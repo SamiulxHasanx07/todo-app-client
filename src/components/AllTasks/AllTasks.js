@@ -3,13 +3,13 @@ import { Table } from 'react-bootstrap';
 import { useQuery } from 'react-query';
 import SingleTask from './SingleTask/SingleTask';
 
-const AllTasks = () => {
+const AllTasks = ({tasks, refetch}) => {
 
 
-    const { data: tasks, isLoading, refetch } = useQuery('todos', () =>
-        fetch('http://localhost:5000/todos')
-            .then(res => res.json())
-    )
+    // const { data: tasks, isLoading, refetch } = useQuery('todos', () =>
+    //     fetch('http://localhost:5000/todos')
+    //         .then(res => res.json())
+    // )
     return (
         <div>
             <h2 className='text-center title-color-main'>All Added Tasks</h2>

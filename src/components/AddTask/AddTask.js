@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Button, Modal } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 
-const AddTask = () => {
+const AddTask = ({refetch}) => {
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
     const [show, setShow] = useState(false);
 
@@ -30,6 +30,7 @@ const AddTask = () => {
             .then(result => {
                 // console.log(result);
                 setShow(false)
+                refetch()
                 reset()
             })
     };
