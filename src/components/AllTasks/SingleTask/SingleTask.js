@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { toast } from 'react-toastify';
+import Swal from 'sweetalert2';
 
 const SingleTask = ({ task, index, refetch }) => {
     const { _id, name, des, status } = task;
@@ -19,7 +20,7 @@ const SingleTask = ({ task, index, refetch }) => {
         })
             .then(res => res.json())
             .then(result => {
-                if(result.modifiedCount){
+                if (result.modifiedCount) {
                     toast.success(`${name} Task is Complete`)
                 }
                 refetch()
@@ -28,14 +29,44 @@ const SingleTask = ({ task, index, refetch }) => {
 
     // delete tasks 
     const handleDelete = () => {
-        fetch(url, {
-            method: 'DELETE',
+
+        Swal.fire({
+            title: 'Are you sure?',
+            text: `Are you want to delte ${name} Ttask !`,
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d41729',
+            cancelButtonColor: '#6f20d4',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+
+                fetch(url, {
+                    method: 'DELETE',
+                })
+                    .then(res => res.json())
+                    .then(result => {
+                        if (result?.deletedCount) {
+                            refetch()
+                        }
+                    })
+
+                Swal.fire(
+                    'Deleted!',
+                    `Your ${name} task has been deleted.`,
+                    'success'
+                )
+            }
         })
-            .then(res => res.json())
-            .then(result => {
-                refetch()
-                console.log(result)
-            })
+        // fetch(url, {
+        //     method: 'DELETE',
+        // })
+        //     .then(res => res.json())
+        //     .then(result => {
+        //         if (result?.deletedCount) {
+        //             refetch()
+        //         }
+        //     })
 
     }
     const state = status === 'completed';
