@@ -6,8 +6,9 @@
 
 :root {
   --main-color: #6f20d4;
-  --main-dark: #651dc6;
+  --main-dark: #5e07d1;
   --black-color: #010105;
+  --white-color:#ffff;
 }
 
 .todo-color {
@@ -26,6 +27,29 @@
   color: var(--black-color);
 }
 
+.todo-btn{
+  background-color: var(--main-color) !important;
+  color: var(--white-color) !important;
+}
+
+.todo-btn:hover{
+  transition: .3s all ease;
+  background-color: var(--main-dark) !important;
+}
+
+
+
 .todo-table {
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.logo{
+  text-decoration: none;
+}
+.logo h3{
+  color:var(--main-color)
+}
+
+.header{
+  background-color: var(--black-color);
 }

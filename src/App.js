@@ -1,25 +1,24 @@
-import { Container } from 'react-bootstrap';
-import { useQuery } from 'react-query';
+import { Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import './App.css';
-import AddTask from './components/AddTask/AddTask';
-import AllTasks from './components/AllTasks/AllTasks';
+import Login from './components/Auth/Login/Login';
+import RequireAuth from './components/Auth/RequireAuth/RequireAuth';
+import Signup from './components/Auth/Signup/Signup';
+import Header from './components/Header/Header';
+import NotFound from './components/NotFound/NotFound';
+import TodoApp from './components/TodoApp/TodoApp';
 
 function App() {
-  const { data: tasks, isLoading, refetch } = useQuery('todos', () =>
-    fetch('http://localhost:5000/todos')
-      .then(res => res.json())
-  )
   return (
-    <div className="App py-5">
-
-
-      <Container>
-        <AddTask refetch={refetch}></AddTask>
-        <AllTasks tasks={tasks} refetch={refetch}></AllTasks>
-      </Container>
-
-
+    <div className="App">
+      <Header />
+      <Routes>
+        <Route path='' element={<TodoApp></TodoApp>}></Route>
+        <Route path='home' element={<TodoApp></TodoApp>}></Route>
+        <Route path='login' element={<Login></Login>}></Route>
+        <Route path='signup' element={<Signup></Signup>}></Route>
+        <Route path='*' element={<NotFound/>}></Route>
+      </Routes>
       <ToastContainer />
     </div>
   );

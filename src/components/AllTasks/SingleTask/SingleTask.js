@@ -8,7 +8,7 @@ const SingleTask = ({ task, index, refetch }) => {
 
 
     // url
-    const url = `http://localhost:5000/todos/${_id}`
+    const url = `https://todo-app-sam-2022.herokuapp.com/todos/${_id}`
 
     // Complete Task
     const handleComplete = () => {

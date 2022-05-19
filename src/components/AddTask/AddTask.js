@@ -8,14 +8,14 @@ const AddTask = ({ refetch }) => {
     const [show, setShow] = useState(false);
 
     const handleClose = () => {
-        console.log('added');
         setShow(false);
+        reset()
     }
-
     const handleShow = () => setShow(true);
 
-    const onSubmit = data => {
-        fetch('http://localhost:5000/todos', {
+    const onSubmit = (data, e) => {
+        e.preventDefault();
+        fetch('https://todo-app-sam-2022.herokuapp.com/todos', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -30,14 +30,12 @@ const AddTask = ({ refetch }) => {
                 reset()
             })
     };
-    console.log(errors);
     return (
         <>
-
-            <h2 className='text-center title-color-main'>Add Tasks</h2>
+            <h2 className='text-center title-color-main'>Add New Task</h2>
             <div className='d-flex align-items-center justify-content-center mt-3 mb-5'>
                 <button className='btn todo-bg-color text-white' onClick={handleShow}>
-                    Add Task
+                    Add New Task
                 </button>
             </div>
 
@@ -45,8 +43,6 @@ const AddTask = ({ refetch }) => {
                 <Modal.Header closeButton>
                     <Modal.Title>Add New Task</Modal.Title>
                 </Modal.Header>
-
-
                 <form className='container pt-3 pb-5' onSubmit={handleSubmit(onSubmit)}>
                     <label htmlFor="name">Task Name</label>
                     <input className='form-control' type="text" placeholder="Task Name" {...register("name", { required: true, maxLength: 80 })} />
@@ -54,7 +50,7 @@ const AddTask = ({ refetch }) => {
 
                     <label className='mt-2' htmlFor="des">Task Description</label>
                     <textarea className='form-control' placeholder='Task Description' {...register("des", { required: true, min: 5, maxLength: 100 })} />
-                    {errors.des && <p className='text-danger m-0'>Task Description Must be Gater Than 5 Character</p>}
+                    {errors.des && <p className='text-danger m-0'>Task Description Must be Greater Than  5 Character</p>}
 
                     <input className='btn todo-bg-color text-white w-100 mt-3' type="submit" value='Add Task' />
                     <button onClick={handleClose} className='btn btn-danger text-white w-100 mt-3'>Cancel</button>

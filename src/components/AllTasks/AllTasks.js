@@ -6,12 +6,12 @@ const AllTasks = ({tasks, refetch}) => {
 
 
     // const { data: tasks, isLoading, refetch } = useQuery('todos', () =>
-    //     fetch('http://localhost:5000/todos')
+    //     fetch('https://todo-app-sam-2022.herokuapp.com/todos')
     //         .then(res => res.json())
     // )
     return (
         <div className=' todo-table px-2 py-5'>
-            <h2 className='text-center title-color-main'>All Added Tasks</h2>
+            <h2 className='text-center title-color-main'>All Tasks</h2>
 
             <Table hover responsive className=''>
                 <thead>
